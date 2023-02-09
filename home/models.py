@@ -11,7 +11,7 @@ class Hall(models.Model):
 	user = models.CharField(max_length=50, default='empty')
 
 	def __str__(self):
-		if not self.status:
+		if self.status:
 			return f'{self.seat} in {self.raw} is reserved'
 		else:
 			return f'{self.seat} in {self.raw} is free'
