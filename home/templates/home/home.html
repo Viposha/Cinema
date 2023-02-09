@@ -2,13 +2,30 @@
 {% load static %}
 
 {% block content %}
-
-
-<div class="container">
-    <img src="{% static 'home/movie1.jpg' %}" class="rounded float-start" alt="..." width="500" height="600">
-    <img src="{% static 'home/movie2.jpg' %}" class="rounded float-end" alt="..." width="500" height="600">
-    <img src="{% static 'home/movie3.jpg' %}" class="rounded float-start" alt="..." width="500" height="600">
-    <img src="{% static 'home/movie4.jpg' %}" class="rounded float-end" alt="..." width="500" height="600">
-</div>
-
+<table class="table">
+  <tbody>
+    <tr>
+      <td>
+          <a href=""><img src="{% static 'home/movie1.jpg' %}" class="rounded float-start" alt="..." width="500" height="600"></a>
+          <p class="indent"><button type="button" class="btn btn-outline-secondary float-start">21:50</button></p>
+      </td>
+      <td>
+          <a href=""><img src="{% static 'home/movie4.jpg' %}" class="rounded float-end" alt="..." width="500" height="600"></a>
+          <p class="indent"><button  type="button" class="btn btn-outline-secondary float-end">14:00</button></p>
+          <p class="indent"><button type="button" class="btn btn-outline-secondary float-end">18:00</button></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+          <a href=""><img src="{% static 'home/movie3.jpg' %}" class="rounded float-start" alt="..." width="500" height="600"></a>
+          <p class="indent"><button type="button" class="btn btn-outline-secondary float-start">20:15</button></p>
+          <p class="indent"><button type="button" class="btn btn-outline-secondary float-start">16:40</button></p>
+      </td>
+      <td>
+          <a href=""><img src="{% static 'home/movie2.jpg' %}" class="rounded float-end" alt="..." width="500" height="600"></a>
+          <p class="indent"><button  type="button" class="btn btn-outline-secondary float-end">12:20</button></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
 {% endblock %}
