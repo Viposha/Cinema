@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
+from .models import Hall
 
 
 class HomeView(TemplateView):
@@ -13,5 +14,9 @@ class MoviesView(TemplateView):
 
 class ContactsView(TemplateView):
 	template_name = 'home/contacts.html'
+
+
+class HallView(ListView):
+	model = Hall
 
 
