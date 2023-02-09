@@ -3,12 +3,12 @@ from django.db import models
 # Create your models here.
 
 
-class CinemaHall(models.Model):
+class Hall(models.Model):
 	id = models.BigAutoField(primary_key=True)
-	raw = models.IntegerField(),
-	seat = models.IntegerField(),
-	status = models.BooleanField(default=False),
-	user = models.CharField(default='empty')
+	raw = models.IntegerField()
+	seat = models.IntegerField()
+	status = models.BooleanField(default=False)
+	user = models.CharField(max_length=50, default='empty')
 
 	def __str__(self):
 		if not self.status:
