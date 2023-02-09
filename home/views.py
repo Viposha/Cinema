@@ -6,5 +6,12 @@ from django.views.generic import TemplateView
 class HomeView(TemplateView):
 	template_name = 'home/home.html'
 
-# def home_view(request):
-# 	return HttpResponse('Home page')
+
+class MoviesView(TemplateView):
+	template_name = 'home/movies.html'
+
+
+class ContactsView(TemplateView):
+	template_name = 'home/contacts.html'
+
+

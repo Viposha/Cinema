@@ -9,7 +9,7 @@
 <body>
 <nav  class="navbar navbar-expand-lg bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Django<br> Cinema</a>
+    <a class="navbar-brand" href="{% url 'home:home' %}">Django<br> Cinema</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -20,16 +20,16 @@
             Сеанси
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Сьогодні</a></li>
+            <li><a class="dropdown-item" href="{% url 'home:home' %}">Сьогодні</a></li>
             <li><a class="dropdown-item" href="#">Завтра</a></li>
             <li><a class="dropdown-item" href="#">15 лютого</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Фільми</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'home:movies'%}">Фільми</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="#">Контакти</a>
+          <a class="nav-link" href="{% url 'home:contacts' %}">Контакти</a>
         </li>
         </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0>
