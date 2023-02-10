@@ -14,4 +14,4 @@ class Hall(models.Model):
 		if self.status:
 			return f'{self.seat} in {self.raw} is reserved'
 		else:
-			return f'{self.seat} in {self.raw} is free'
+			return f'{self.id} {self.status} '

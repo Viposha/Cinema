@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+    {% for place in raws %}
+        {{form}}
+<!--        {% if place.status == False %}-->
+<!--        <input class="form-check-input" type="checkbox" value="True" id="{{x.id}}">-->
+<!--        {% if place.seat == 10 %}-->
+<!--        <br>-->
+<!--        {% endif %}-->
+<!--        {% elif place.status == True %}-->
+<!--        <input class="form-check-input" type="checkbox" value="True" id="{{x.id}} " disabled>-->
+<!--        {% endif %}-->
+    {%endfor%}
+        <input type="submit" value="Купити">
+    </form>
+</div>
+{% endblock %}
