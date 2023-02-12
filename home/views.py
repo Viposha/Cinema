@@ -29,10 +29,13 @@ def seats_view(request):
 
 def pay_view(request):
 	if request.method == 'POST':
+		form_data = request.POST
+		email = form_data['email']
 		data = request.session.get('data')
 		for seat in data:
 			place = Hall.objects.get(pk=int(seat))
 			place.status = 1
+			place.user = email
 			place.save()
 		return redirect(reverse('home:home'))
 	else:
