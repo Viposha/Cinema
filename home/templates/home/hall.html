@@ -23,7 +23,7 @@
             <form method="POST">
             {% csrf_token %}
             {% for place in raws %}
-                {% if place.status == False %}
+                {% if place.status == False %} <!-- fix 10 seats for 1 rof when 10s seat are picked-->
                     <label for="{{place.id}}"></label>
                     <input class="form-check-input" type="checkbox" name="seat" value="{{place.id}}" id="{{place.id}}">
 <!--                    <div>Ряд:{{place.raw}} <p>Місце:{{place.seat}}</p></div>-->
