@@ -34,7 +34,7 @@ def seats_view(request):
 def pay_view(request):
 	dict_seats = []
 	data = request.session.get('data')
-	count_of_seats = len(data)
+	price = len(data) * 160
 	if data:
 		for seat in data:
 			place = Hall.objects.get(pk=int(seat))
@@ -42,4 +42,4 @@ def pay_view(request):
 			seat = place.seat
 			dict_seats.append([raw, seat])
 	print(dict_seats)
-	return render(request, 'home/pay.html', context={'seats': data, 'dict_seats': dict_seats, 'count':count_of_seats})
+	return render(request, 'home/pay.html', context={'seats': data, 'dict_seats': dict_seats, 'count':price})
