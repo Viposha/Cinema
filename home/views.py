@@ -20,7 +20,6 @@ class ContactsView(TemplateView):
 def seats_view(request):
 	if request.method == 'POST':
 		picked_seats = request.POST.getlist('seat')  # return ['1', '33']
-		print(picked_seats)
 		for seat in picked_seats:
 			place = Hall.objects.get(pk=int(seat))
 			place.status = 1
