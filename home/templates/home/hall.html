@@ -21,12 +21,22 @@
       <td align="center">
           <div class="container">
               <p align="center">Екран</p>
-            {% for place in object_list %}
-                <button id="{{place.id}}" type="button" data-bs-toggle="button" class="btn btn-outline-secondary btn-sm">{{place.seat}}</button>
-                {% if place.seat == 10 %}
-                    <br>
-                {% endif %}
-            {% endfor %}
+            <form method="POST">
+    {% csrf_token %}
+    {% for place in raws %}
+     {% if place.status == False %}
+        <input class="form-check-input" type="checkbox" name="seat" value="{{place.id}}">
+        {% if place.seat == 10 %}
+        <br>
+        {% endif %}
+        {% elif place.status == True %}
+        <input class="form-check-input" type="checkbox" name="seat" value="{{place.id}}" disabled>
+        {% endif %}
+
+    {% endfor %}
+                <br>
+    <input type="submit">
+    </form>
         </div>
       </td>
       <td>

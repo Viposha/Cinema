@@ -17,23 +17,16 @@ class ContactsView(TemplateView):
 	template_name = 'home/contacts.html'
 
 
-class HallView(ListView):
-	model = Hall
-
-
-def hall_review(request):
-
+def seats_view(request):
 	if request.method == 'POST':
-		form = HallForm(request.POST)
-		if form.is_valid():
-			article = Hall.objects.get(pk=1)
-			form = HallForm(request.POST,instance=article)
-			form.save()
-			return redirect(reverse('home:home'))
+		picked_seats = request.POST.getlist('seat')  # return ['1', '33']
+		print(picked_seats)
+		for seat in picked_seats:
+			place = Hall.objects.get(pk=int(seat))
+			place.status = 1
+			place.save()
+		return redirect(reverse('home:home'))
 	else:
-		article = Hall.objects.get(pk=1)
-		print(article)
-		form = HallForm(instance=article)
 		data = Hall.objects.all()
-	return render(request, 'home/test.html', context={'form':form, 'raws':data})
+	return render(request, 'home/hall.html', context={'raws':data})
 
