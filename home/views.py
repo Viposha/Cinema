@@ -25,7 +25,7 @@ def seats_view(request):
 			place = Hall.objects.get(pk=int(seat))
 			place.status = 1
 			place.save()
-		return redirect(reverse('home:home'))
+		return redirect(reverse('home:hall'))
 	else:
 		data = Hall.objects.all()
 	return render(request, 'home/hall.html', context={'raws':data})

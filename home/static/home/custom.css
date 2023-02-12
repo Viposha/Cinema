@@ -1,8 +1,14 @@
-.bgcolor{
-    background-color: green;
-}
-
 .indent {
    margin: 0 0 10rem;
 }
 
+input[type="checkbox"]:disabled {
+  background: #808080;
+}
+
+input[type="checkbox"]:hover {
+  background: #808080;
+}
+
+input+div{display:none;}
+input:hover+div{display:inline;}

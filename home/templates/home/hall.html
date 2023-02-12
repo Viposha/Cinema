@@ -7,36 +7,37 @@
     <tr>
       <td>
           <img src="{% static 'home/movie4.jpg' %}" class="rounded float-start"  alt="..." width="150" height="200">
-
       </td>
       <td>
           <br>
-           <p>Сідло чи не сідло?</p>
+          <p>Сідло чи не сідло?</p>
           <p>Київ, ТРЦ Django Cinema / Зал №3</p>
-           <p> 13.02.2023 / 14:00 - 15:45</p>
-            <p> 18+</p>
+          <p> 13.02.2023 / 14:00 - 15:45</p>
+          <p> 18+</p>
       </td>
     </tr>
     <tr>
       <td align="center">
           <div class="container">
-              <p align="center">Екран</p>
+            <p align="center">Екран</p>
             <form method="POST">
-    {% csrf_token %}
-    {% for place in raws %}
-     {% if place.status == False %}
-        <input class="form-check-input" type="checkbox" name="seat" value="{{place.id}}">
-        {% if place.seat == 10 %}
-        <br>
-        {% endif %}
-        {% elif place.status == True %}
-        <input class="form-check-input" type="checkbox" name="seat" value="{{place.id}}" disabled>
-        {% endif %}
-
-    {% endfor %}
-                <br>
-    <input type="submit">
-    </form>
+            {% csrf_token %}
+            {% for place in raws %}
+                {% if place.status == False %}
+                    <label for="{{place.id}}"></label>
+                    <input class="form-check-input" type="checkbox" name="seat" value="{{place.id}}" id="{{place.id}}">
+                    <div>Ряд:{{place.raw}} <p>Місце:{{place.seat}}</p></div>
+                    {% if place.seat == 10 %}
+                        <br>
+                    {% endif %}
+                {% elif place.status == True %}
+                    <label for="{{place.id}}"></label>
+                    <input class="form-check-input" type="checkbox" name="seat" value="{{place.id}}" id="{{place.id}}" disabled >
+                {% endif %}
+            {% endfor %}
+            <br>
+            <input type="submit">
+            </form>
         </div>
       </td>
       <td>
