@@ -6,24 +6,24 @@
   <tbody>
     <tr>
       <td>
-          <img src="{% static 'home/movie4.jpg' %}" class="rounded float-start"  alt="..." width="150" height="200">
+          <img src="{% static 'home/movie4.jpg' %}" class="rounded float-start"  alt="..." width="220" height="300">
       </td>
-      <td>
-          <br>
-          <p>Сідло чи не сідло?</p>
-          <p>Київ, ТРЦ Django Cinema / Зал №3</p>
-          <p> 13.02.2023 / 14:00 - 15:45</p>
+      <td class="float-end">
+          <br><br><br><br>
+          <p>Сідло чи не сідло?</p><br>
+          <p>Київ, ТРЦ Django Cinema / Зал №3</p><br>
+          <p> 13.02.2023 / 14:00 - 15:45</p><br>
           <p> 18+</p>
       </td>
     </tr>
-    <tr>
-      <td align="center">
-          <div class="container">
+     </tbody>
+</table>
+          <div class="container" align="center" >
             <p align="center">Екран</p>
             <form method="POST">
             {% csrf_token %}
             {% for place in raws %}
-                {% if place.status == False %} <!-- fix 10 seats for 1 rof when 10s seat are picked-->
+                {% if place.status == False %}
                     <label class="label" for="{{place.id}}">
                     <input class="form-check-input" type="checkbox" name="seat" value="{{place.id}}" id="{{place.id}}">
                     <span class="place">{{place.seat}}</span>
@@ -46,14 +46,9 @@
                 {% endif %}
             {% endfor %}
             <br>
-            <input type="submit">
+            <input type="submit" value="Купити">
             </form>
         </div>
-      </td>
-      <td>
-          Покупка квитків
-      </td>
-    </tr>
-  </tbody>
-</table>
+
+
 {% endblock %}
