@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, reverse
-from django.http import HttpResponse
+from django.contrib import messages
 from django.views.generic import TemplateView, ListView
 from .models import Hall
 from .forms import CheckoutForm
@@ -37,6 +37,7 @@ def pay_view(request):
 			place.status = 1
 			place.user = email
 			place.save()
+		messages.add_message(request, messages.SUCCESS, 'Квитки придбані. Чекаємо Вас у нашому кінотеатрі!')
 		return redirect(reverse('home:home'))
 	else:
 		dict_seats = []
