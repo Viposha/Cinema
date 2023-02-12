@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+Квитки:
+{% for pair in dict_seats%}
+
+<p>Ряд: {{pair.0}}
+Місце: {{pair.1}}
+Ціна: 160 грн.</p>
+{% endfor %}
+{% endblock %}

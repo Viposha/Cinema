@@ -20,12 +20,26 @@ class ContactsView(TemplateView):
 def seats_view(request):
 	if request.method == 'POST':
 		picked_seats = request.POST.getlist('seat')  # return ['1', '33']
+		request.session['data'] = picked_seats       # pass data in current session
 		for seat in picked_seats:
 			place = Hall.objects.get(pk=int(seat))
 			place.status = 1
 			place.save()
-		return redirect(reverse('home:hall'))
+		return redirect(reverse('home:pay'))
 	else:
 		data = Hall.objects.all()
 	return render(request, 'home/hall.html', context={'raws':data})
 
+
+def pay_view(request):
+	dict_seats = []
+	data = request.session.get('data')
+	count_of_seats = len(data)
+	if data:
+		for seat in data:
+			place = Hall.objects.get(pk=int(seat))
+			raw = place.raw
+			seat = place.seat
+			dict_seats.append([raw, seat])
+	print(dict_seats)
+	return render(request, 'home/pay.html', context={'seats': data, 'dict_seats': dict_seats, 'count':count_of_seats})
