@@ -11,7 +11,10 @@ class Hall(models.Model):
 	user = models.CharField(max_length=50, default='empty')
 
 	def __str__(self):
-		if self.status:
-			return f'{self.seat} in {self.raw} is reserved'
-		else:
-			return f'{self.id} {self.status} '
+		return f'Seat: {self.seat}  Raw: {self.raw}'
+
+	class Meta:
+		verbose_name = 'Зал'
+		verbose_name_plural = 'Зал'
+		ordering = ['id']
+
