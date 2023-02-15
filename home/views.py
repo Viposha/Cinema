@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from django.views.generic import TemplateView, ListView
-from .models import Hall, Session
+from .models import Hall, Session, Tickets
 from .forms import CheckoutForm
 
 
@@ -26,13 +26,19 @@ class ContactsView(TemplateView):
 def seats_view(request, time):
 	if request.method == 'POST':
 		picked_seats = request.POST.getlist('seat')  # return ['1', '33']
-		request.session['data'] = picked_seats       # pass data in current session
+		request.session['data'] = picked_seats
+		request.session['time'] = time              # pass data in current session
 		return redirect(reverse('home:pay'))
 	else:
+		ticket_id =[]
 		time = time
+		tickets = Tickets.objects.all()
+		for ticket in tickets:
+			if ticket.time == time:
+				ticket_id.append(ticket.seat_id)
 		session = Session.objects.all()
 		data = Hall.objects.all()
-	return render(request, 'home/hall.html', context={'raws':data, 'session': session, 'time': time})
+	return render(request, 'home/hall.html', context={'raws':data, 'session': session, 'time': time, 'ticket_id':ticket_id})
 
 
 def pay_view(request):
@@ -40,6 +46,11 @@ def pay_view(request):
 		form_data = request.POST
 		email = form_data['email']
 		data = request.session.get('data')
+		time = request.session.get('time')
+		for seat in data:
+			place = Hall.objects.get(pk=int(seat))
+			ticket = Tickets(seat_id=int(seat), raw=place.raw, seat=place.seat, user=email, time=time)
+			ticket.save()
 		for seat in data:
 			place = Hall.objects.get(pk=int(seat))
 			place.status = 1

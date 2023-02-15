@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-{{time}}
+
 <!--<table class="table">-->
 <!--  <tbody>-->
 <!--    <tr>-->
@@ -24,7 +24,14 @@
             <form method="POST">
             {% csrf_token %}
             {% for place in raws %}
-<!--                {% if place.status == False %}-->
+                {% if place.id in ticket_id %}
+                    <label for="{{place.id}}">
+                    <input class="form-check-input" type="checkbox" name="seat" value="{{place.id}}" id="{{place.id}}" disabled >
+                    </label>
+                    {% if place.seat == 10 %}
+                        <br>
+                    {% endif %}
+                {% else %}
                     <label class="label" for="{{place.id}}">
                     <input class="form-check-input" type="checkbox" name="seat" value="{{place.id}}" id="{{place.id}}">
                     <span class="place">{{place.seat}}</span>
@@ -37,15 +44,8 @@
                     {% if place.seat == 10 %}
                         <br>
                     {% endif %}
-<!--                {% elif place.status == True %}-->
-                    <label for="{{place.id}}">
-                    <input class="form-check-input" type="checkbox" name="seat" value="{{place.id}}" id="{{place.id}}" disabled >
-                    </label>
-                    {% if place.seat == 10 %}
-                        <br>
-                    {% endif %}
                 {% endif %}
-<!--            {% endfor %}-->
+            {% endfor %}
             <br>
             <input type="submit" value="Купити">
             </form>

@@ -31,3 +31,16 @@ class Session(models.Model):
 		verbose_name = 'Сеанс'
 		verbose_name_plural = 'Cеанси'
 		ordering = ['time']
+
+
+class Tickets(models.Model):
+	seat_id = models.IntegerField()
+	raw = models.IntegerField()
+	seat = models.IntegerField()
+	user = models.CharField(max_length=50, blank=True)
+	time = models.CharField(max_length=10)
+
+	class Meta:
+		verbose_name = 'Квитки'
+		verbose_name_plural = 'Квитки'
+		ordering = ['seat_id']

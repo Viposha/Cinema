@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Hall, Session
+from .models import Hall, Session, Tickets
 
 
 class HallAdmin(admin.ModelAdmin):
@@ -14,5 +14,12 @@ class SessionAdmin(admin.ModelAdmin):
 	search_fields = ('time', 'movie')
 
 
+class TicketsAdmin(admin.ModelAdmin):
+	list_display = ('id', 'seat_id', 'raw', 'seat', 'user', 'time')
+	list_display_links = ('id', 'seat', 'user', 'time')
+	search_fields = ('user',)
+
+
 admin.site.register(Hall, HallAdmin)
 admin.site.register(Session, SessionAdmin)
+admin.site.register(Tickets, TicketsAdmin)
