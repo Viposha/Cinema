@@ -17,25 +17,26 @@
     <tr>
       <td>
           <a href=""><img src="{% static 'home/movie1.jpg' %}" class="rounded float-start" alt="..." ></a>
-          <p class="indent"><button type="button" class="btn btn-outline-secondary float-start">21:50</button></p>
+          <p class="indent"><a href="/hall/{{session.5.time}}"><button type="button" class="btn btn-outline-secondary float-start">{{session.5.time}}</button></a></p>
       </td>
       <td>
           <a href=""><img src="{% static 'home/movie4.jpg' %}" class="rounded float-end" alt="..." ></a>
-         <p class="indent"><button  type="button" class="btn btn-outline-secondary float-end"> <a href="{% url 'home:hall' %}">14:00</a></button></p>
-          <p class="indent"><button type="button" class="btn btn-outline-secondary float-end">18:00</button></p>
+          <p class="indent"><a href="/hall/{{session.0.time}}"> <button  type="button" class="btn btn-outline-secondary float-end"> {{session.0.time}}</button></a></p>
+          <p class="indent"><a href="/hall/{{session.1.time}}"><button type="button" class="btn btn-outline-secondary float-end">{{session.1.time}}</button></a></p>
       </td>
     </tr>
     <tr>
       <td>
           <a href=""><img src="{% static 'home/movie3.jpg' %}" class="rounded float-start" alt="..." ></a>
-          <p class="indent"><button type="button" class="btn btn-outline-secondary float-start">20:15</button></p>
-          <p class="indent"><button type="button" class="btn btn-outline-secondary float-start">16:40</button></p>
+         <p class="indent"> <a href="/hall/{{session.2.time}}"><button  type="button" class="btn btn-outline-secondary float-start">{{session.2.time}}</button></a></p>
+          <p class="indent"><a href="/hall/{{session.3.time}}"><button  type="button" class="btn btn-outline-secondary float-start">{{session.3.time}}</button></a></p>
       </td>
       <td>
           <a href=""><img src="{% static 'home/movie2.jpg' %}" class="rounded float-end" alt="..." ></a>
-          <p class="indent"><button  type="button" class="btn btn-outline-secondary float-end">12:20</button></p>
+          <a href="/hall/{{session.4.time}}"><p class="indent"><button  type="button" class="btn btn-outline-secondary float-end">{{session.4.time}}</button></p></a>
       </td>
     </tr>
   </tbody>
 </table>
+
 {% endblock %}

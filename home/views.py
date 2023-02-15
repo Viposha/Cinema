@@ -1,12 +1,18 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from django.views.generic import TemplateView, ListView
-from .models import Hall
+from .models import Hall, Session
 from .forms import CheckoutForm
 
 
 class HomeView(TemplateView):
 	template_name = 'home/home.html'
+	a = []
+	for session in Session.objects.all():
+		print(session.time)
+		a.append(session)
+		print(a)
+	extra_context = {'session': a}
 
 
 class MoviesView(TemplateView):
@@ -17,14 +23,16 @@ class ContactsView(TemplateView):
 	template_name = 'home/contacts.html'
 
 
-def seats_view(request):
+def seats_view(request, time):
 	if request.method == 'POST':
 		picked_seats = request.POST.getlist('seat')  # return ['1', '33']
 		request.session['data'] = picked_seats       # pass data in current session
 		return redirect(reverse('home:pay'))
 	else:
+		time = time
+		session = Session.objects.all()
 		data = Hall.objects.all()
-	return render(request, 'home/hall.html', context={'raws':data})
+	return render(request, 'home/hall.html', context={'raws':data, 'session': session, 'time': time})
 
 
 def pay_view(request):

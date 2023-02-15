@@ -2,28 +2,29 @@
 {% load static %}
 
 {% block content %}
-<table class="table">
-  <tbody>
-    <tr>
-      <td>
-          <img src="{% static 'home/movie4.jpg' %}" class="rounded float-start"  alt="..." width="220" height="300">
-      </td>
-      <td class="float-end">
-          <br><br><br><br>
-          <p>Сідло чи не сідло?</p><br>
-          <p>Київ, ТРЦ Django Cinema / Зал №3</p><br>
-          <p> 13.02.2023 / 14:00 - 15:45</p><br>
-          <p> 18+</p>
-      </td>
-    </tr>
-     </tbody>
-</table>
+{{time}}
+<!--<table class="table">-->
+<!--  <tbody>-->
+<!--    <tr>-->
+<!--      <td>-->
+<!--          <img src="{% static 'home/movie4.jpg' %}" class="rounded float-start"  alt="..." width="220" height="300">-->
+<!--      </td>-->
+<!--      <td class="float-end">-->
+<!--          <br><br><br><br>-->
+<!--          <p>Сідло чи не сідло?</p><br>-->
+<!--          <p>Київ, ТРЦ Django Cinema / Зал №3</p><br>-->
+<!--          <p> 13.02.2023 / 14:00 - 15:45</p><br>-->
+<!--          <p> 18+</p>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--     </tbody>-->
+<!--</table>-->
           <div class="container" align="center" >
             <p align="center">Екран</p>
             <form method="POST">
             {% csrf_token %}
             {% for place in raws %}
-                {% if place.status == False %}
+<!--                {% if place.status == False %}-->
                     <label class="label" for="{{place.id}}">
                     <input class="form-check-input" type="checkbox" name="seat" value="{{place.id}}" id="{{place.id}}">
                     <span class="place">{{place.seat}}</span>
@@ -36,7 +37,7 @@
                     {% if place.seat == 10 %}
                         <br>
                     {% endif %}
-                {% elif place.status == True %}
+<!--                {% elif place.status == True %}-->
                     <label for="{{place.id}}">
                     <input class="form-check-input" type="checkbox" name="seat" value="{{place.id}}" id="{{place.id}}" disabled >
                     </label>
@@ -44,7 +45,7 @@
                         <br>
                     {% endif %}
                 {% endif %}
-            {% endfor %}
+<!--            {% endfor %}-->
             <br>
             <input type="submit" value="Купити">
             </form>
