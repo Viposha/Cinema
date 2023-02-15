@@ -3,22 +3,54 @@
 
 {% block content %}
 
-<!--<table class="table">-->
-<!--  <tbody>-->
-<!--    <tr>-->
-<!--      <td>-->
-<!--          <img src="{% static 'home/movie4.jpg' %}" class="rounded float-start"  alt="..." width="220" height="300">-->
-<!--      </td>-->
-<!--      <td class="float-end">-->
-<!--          <br><br><br><br>-->
-<!--          <p>Сідло чи не сідло?</p><br>-->
-<!--          <p>Київ, ТРЦ Django Cinema / Зал №3</p><br>-->
-<!--          <p> 13.02.2023 / 14:00 - 15:45</p><br>-->
-<!--          <p> 18+</p>-->
-<!--      </td>-->
-<!--    </tr>-->
-<!--     </tbody>-->
-<!--</table>-->
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td>
+          {% if time == '12:00' or time == '14:00' %}
+          <img src="{% static 'home/movie4.jpg' %}" class="rounded float-start"  alt="..." width="220" height="300">
+      </td>
+      <td class="float-end">
+          <br><br><br><br>
+          <p>Сідло чи не сідло?</p><br>
+          <p>Київ, ТРЦ Django Cinema / Зал №3</p><br>
+          <p> 13.02.2023 / {{time}}</p><br>
+          <p> 18+</p>
+          {% elif time == '16:00' or time == '18:00' %}
+             <img src="{% static 'home/movie3.jpg' %}" class="rounded float-start"  alt="..." width="220" height="300">
+      </td>
+      <td class="float-end">
+          <br><br><br><br>
+          <p>Хлопчик і шалена пригода</p><br>
+          <p>Київ, ТРЦ Django Cinema / Зал №3</p><br>
+          <p> 13.02.2023 / {{time}}</p><br>
+          <p> Пригоди</p>
+           {% elif time == '20:00' %}
+             <img src="{% static 'home/movie2.jpg' %}" class="rounded float-start"  alt="..." width="220" height="300">
+      </td>
+      <td class="float-end">
+          <br><br><br><br>
+          <p>Креветка і трансформатор</p><br>
+          <p>Київ, ТРЦ Django Cinema / Зал №3</p><br>
+          <p> 13.02.2023 / {{time}}</p><br>
+          <p> Розважальна комедія</p>
+          {% elif time == '22:00' %}
+             <img src="{% static 'home/movie1.jpg' %}" class="rounded float-start"  alt="..." width="220" height="300">
+      </td>
+      <td class="float-end">
+          <br><br><br><br>
+          <p>РІМТ МОТОТ</p><br>
+          <p>Київ, ТРЦ Django Cinema / Зал №3</p><br>
+          <p> 13.02.2023 / {{time}}</p><br>
+          <p> Жахи  18+</p>
+          {% endif %}
+      </td>
+    </tr>
+     </tbody>
+</table>
+
+
           <div class="container" align="center" >
             <p align="center">Екран</p>
             <form method="POST">
@@ -50,6 +82,5 @@
             <input type="submit" value="Купити">
             </form>
         </div>
-
 
 {% endblock %}

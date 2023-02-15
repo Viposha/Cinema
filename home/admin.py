@@ -3,8 +3,8 @@ from .models import Hall, Session, Tickets
 
 
 class HallAdmin(admin.ModelAdmin):
-	list_display = ('id', 'raw', 'seat', 'status', 'user', 'session')
-	list_display_links = ('id', 'seat', 'user', 'session')
+	list_display = ('id', 'raw', 'seat')
+	list_display_links = ('id', 'seat')
 	search_fields = ('user',)
 
 

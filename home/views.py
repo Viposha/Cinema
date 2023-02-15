@@ -9,9 +9,7 @@ class HomeView(TemplateView):
 	template_name = 'home/home.html'
 	a = []
 	for session in Session.objects.all():
-		print(session.time)
 		a.append(session)
-		print(a)
 	extra_context = {'session': a}
 
 
@@ -31,7 +29,6 @@ def seats_view(request, time):
 		return redirect(reverse('home:pay'))
 	else:
 		ticket_id =[]
-		time = time
 		tickets = Tickets.objects.all()
 		for ticket in tickets:
 			if ticket.time == time:
@@ -51,11 +48,6 @@ def pay_view(request):
 			place = Hall.objects.get(pk=int(seat))
 			ticket = Tickets(seat_id=int(seat), raw=place.raw, seat=place.seat, user=email, time=time)
 			ticket.save()
-		for seat in data:
-			place = Hall.objects.get(pk=int(seat))
-			place.status = 1
-			place.user = email
-			place.save()
 		messages.add_message(request, messages.SUCCESS, 'Квитки придбані. Чекаємо Вас у нашому кінотеатрі!')
 		return redirect(reverse('home:home'))
 	else:

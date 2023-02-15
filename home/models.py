@@ -7,9 +7,9 @@ class Hall(models.Model):
 	id = models.BigAutoField(primary_key=True)
 	raw = models.IntegerField()
 	seat = models.IntegerField()
-	status = models.BooleanField(default=False)
-	user = models.CharField(max_length=50, default='empty')
-	session = models.ForeignKey('Session', on_delete=models.PROTECT, blank=True, default=1)
+	# status = models.BooleanField(default=False)
+	# user = models.CharField(max_length=50, default='empty')
+	# session = models.ForeignKey('Session', on_delete=models.PROTECT, blank=True, default=1)
 
 	def __str__(self):
 		return f'Seat: {self.seat}  Raw: {self.raw}'
